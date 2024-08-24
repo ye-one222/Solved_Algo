@@ -6,6 +6,7 @@ using namespace std;
 list<string> sl;
 list<string>::iterator iter = sl.begin();
 int main() {
+    
     int x;
     string L;
 
@@ -28,8 +29,7 @@ int main() {
                     iter = sl.erase(--iter);
             }
             else {
-                iter = sl.insert(iter, next);
-                iter++;
+                sl.insert(iter, next);
             }
         }
         for (iter = sl.begin(); iter != sl.end(); iter++) {
