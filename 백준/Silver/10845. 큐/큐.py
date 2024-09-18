@@ -1,34 +1,33 @@
-N = int(input())
-front = 0
-back = 0
-queue = []
+import sys
+from collections import deque
 
-for i in range(N):
-    inst = input();
-    if inst[:4] == "push":
-        x=inst[5:]
-        queue.append(x)
-        back+=1
-    elif inst == "pop":
-        if front==back:
+input = sys.stdin.readline
+N = int(input())
+dq = deque()
+
+for _ in range(N):
+    inst = input().split()
+    if inst[0]=="push":
+        dq.append(inst[1])
+    elif inst[0]=="pop":
+        if not dq:
             print(-1)
         else:
-            print(queue[front])
-            front+=1
-    elif inst == "size":
-        print(back-front)
-    elif inst == "empty":
-        if front==back:
+            print(dq.popleft())
+    elif inst[0] == "size":
+        print(len(dq))
+    elif inst[0] == "empty":
+        if not dq:
             print(1)
         else:
             print(0)
-    elif inst == "front":
-        if front==back:
+    elif inst[0] == "front":
+        if not dq:
             print(-1)
         else:
-            print(queue[front])
-    elif inst == "back":
-        if front==back:
+            print(dq[0])
+    elif inst[0] == "back":
+        if not dq:
             print(-1)
         else:
-            print(queue[back-1])
+            print(dq[-1])
